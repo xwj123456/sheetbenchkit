@@ -1,0 +1,284 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "schema_version": {
+      "const": "1"
+    },
+    "metric_id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9_-]{1,64}(?![\\s\\S])"
+    },
+    "sources": {
+      "type": "object",
+      "additionalProperties": {
+        "$ref": "#/$defs/source"
+      },
+      "propertyNames": {
+        "type": "string",
+        "pattern": "^[A-Za-z0-9_-]{1,64}(?![\\s\\S])"
+      },
+      "minProperties": 1,
+      "maxProperties": 2
+    },
+    "metric": {
+      "oneOf": [
+        {
+          "$ref": "#/$defs/root_sum"
+        },
+        {
+          "$ref": "#/$defs/count"
+        },
+        {
+          "$ref": "#/$defs/ratio"
+        }
+      ]
+    }
+  },
+  "required": [
+    "schema_version",
+    "metric_id",
+    "sources",
+    "metric"
+  ],
+  "additionalProperties": false,
+  "$defs": {
+    "count": {
+      "type": "object",
+      "properties": {
+        "op": {
+          "const": "count"
+        },
+        "source": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9_-]{1,64}(?![\\s\\S])"
+        },
+        "filter": {
+          "oneOf": [
+            {
+              "type": "object",
+              "properties": {
+                "field": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "eq": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "field",
+                "eq"
+              ],
+              "additionalProperties": false
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "op",
+        "source"
+      ],
+      "additionalProperties": false
+    },
+    "ratio": {
+      "type": "object",
+      "properties": {
+        "op": {
+          "const": "ratio"
+        },
+        "numerator": {
+          "oneOf": [
+            {
+              "$ref": "#/$defs/sum"
+            },
+            {
+              "$ref": "#/$defs/count"
+            }
+          ]
+        },
+        "denominator": {
+          "oneOf": [
+            {
+              "$ref": "#/$defs/sum"
+            },
+            {
+              "$ref": "#/$defs/count"
+            }
+          ]
+        },
+        "places": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 12
+        },
+        "rounding": {
+          "const": "HALF_UP"
+        }
+      },
+      "required": [
+        "op",
+        "numerator",
+        "denominator",
+        "places",
+        "rounding"
+      ],
+      "additionalProperties": false
+    },
+    "root_sum": {
+      "type": "object",
+      "properties": {
+        "op": {
+          "const": "sum"
+        },
+        "source": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9_-]{1,64}(?![\\s\\S])"
+        },
+        "field": {
+          "type": "string",
+          "minLength": 1
+        },
+        "unit": {
+          "type": "string",
+          "minLength": 1
+        },
+        "filter": {
+          "oneOf": [
+            {
+              "type": "object",
+              "properties": {
+                "field": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "eq": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "field",
+                "eq"
+              ],
+              "additionalProperties": false
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "places": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 12
+        },
+        "rounding": {
+          "const": "HALF_UP"
+        }
+      },
+      "required": [
+        "op",
+        "source",
+        "field",
+        "unit",
+        "places",
+        "rounding"
+      ],
+      "additionalProperties": false
+    },
+    "source": {
+      "type": "object",
+      "properties": {
+        "file_id": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9_-]{1,64}(?![\\s\\S])"
+        },
+        "sheet": {
+          "type": "string",
+          "minLength": 1
+        },
+        "header_row": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "rows": {
+          "type": "array",
+          "prefixItems": [
+            {
+              "type": "integer",
+              "minimum": 1
+            },
+            {
+              "type": "integer",
+              "minimum": 1
+            }
+          ],
+          "items": false,
+          "minItems": 2,
+          "maxItems": 2
+        }
+      },
+      "required": [
+        "file_id",
+        "sheet",
+        "header_row",
+        "rows"
+      ],
+      "additionalProperties": false
+    },
+    "sum": {
+      "type": "object",
+      "properties": {
+        "op": {
+          "const": "sum"
+        },
+        "source": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9_-]{1,64}(?![\\s\\S])"
+        },
+        "field": {
+          "type": "string",
+          "minLength": 1
+        },
+        "unit": {
+          "type": "string",
+          "minLength": 1
+        },
+        "filter": {
+          "oneOf": [
+            {
+              "type": "object",
+              "properties": {
+                "field": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "eq": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "field",
+                "eq"
+              ],
+              "additionalProperties": false
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "op",
+        "source",
+        "field",
+        "unit"
+      ],
+      "additionalProperties": false
+    }
+  }
+}

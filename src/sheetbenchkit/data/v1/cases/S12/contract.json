@@ -1,0 +1,1 @@
+{"metric":{"filter":{"eq":"OK","field":"actual_status"},"op":"count","source":"chosen"},"metric_id":"metric","schema_version":"1","sources":{"chosen":{"file_id":"book","header_row":1,"rows":[2,3],"sheet":"Actual"}}}

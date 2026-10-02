@@ -1,0 +1,208 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "status": {
+      "enum": [
+        "VALUE",
+        "ABSTAIN"
+      ]
+    },
+    "value": {
+      "oneOf": [
+        {
+          "type": "string",
+          "pattern": "^-?(0|[1-9][0-9]*)(\\.[0-9]+)?(?![\\s\\S])",
+          "maxLength": 128
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "unit": {
+      "oneOf": [
+        {
+          "type": "string",
+          "minLength": 1
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "reason": {
+      "oneOf": [
+        {
+          "enum": [
+            "MISSING_SOURCE",
+            "MISSING_FIELD",
+            "AMBIGUOUS_FIELD",
+            "MISSING_VALUE",
+            "INVALID_VALUE",
+            "UNSUPPORTED_CELL",
+            "INVALID_FILTER_VALUE",
+            "UNSUPPORTED_UNIT_CONVERSION",
+            "ZERO_DENOMINATOR",
+            "UNSUPPORTED_INPUT_LIMIT"
+          ]
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "bindings": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/binding"
+      }
+    },
+    "schema_version": {
+      "const": "1"
+    },
+    "case_id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9_-]{1,64}(?![\\s\\S])"
+    },
+    "metric_id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9_-]{1,64}(?![\\s\\S])"
+    }
+  },
+  "required": [
+    "status",
+    "value",
+    "bindings",
+    "schema_version",
+    "case_id",
+    "metric_id"
+  ],
+  "additionalProperties": false,
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "status": {
+            "const": "VALUE"
+          }
+        }
+      },
+      "then": {
+        "required": [
+          "unit"
+        ],
+        "properties": {
+          "value": {
+            "type": "string",
+            "pattern": "^-?(0|[1-9][0-9]*)(\\.[0-9]+)?(?![\\s\\S])",
+            "maxLength": 128
+          },
+          "unit": {
+            "type": "string",
+            "minLength": 1
+          },
+          "reason": {
+            "type": "null"
+          },
+          "bindings": {
+            "type": "array",
+            "items": {
+              "$ref": "#/$defs/binding"
+            },
+            "minItems": 1
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "status": {
+            "const": "ABSTAIN"
+          }
+        }
+      },
+      "then": {
+        "required": [
+          "reason"
+        ],
+        "properties": {
+          "value": {
+            "type": "null"
+          },
+          "reason": {
+            "enum": [
+              "MISSING_SOURCE",
+              "MISSING_FIELD",
+              "AMBIGUOUS_FIELD",
+              "MISSING_VALUE",
+              "INVALID_VALUE",
+              "UNSUPPORTED_CELL",
+              "INVALID_FILTER_VALUE",
+              "UNSUPPORTED_UNIT_CONVERSION",
+              "ZERO_DENOMINATOR",
+              "UNSUPPORTED_INPUT_LIMIT"
+            ]
+          }
+        }
+      }
+    }
+  ],
+  "$defs": {
+    "binding": {
+      "type": "object",
+      "properties": {
+        "source": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9_-]{1,64}(?![\\s\\S])"
+        },
+        "file_id": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9_-]{1,64}(?![\\s\\S])"
+        },
+        "sheet": {
+          "type": "string",
+          "minLength": 1
+        },
+        "header_row": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "rows": {
+          "type": "array",
+          "prefixItems": [
+            {
+              "type": "integer",
+              "minimum": 1
+            },
+            {
+              "type": "integer",
+              "minimum": 1
+            }
+          ],
+          "items": false,
+          "minItems": 2,
+          "maxItems": 2
+        },
+        "fields": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true
+        }
+      },
+      "required": [
+        "source",
+        "file_id",
+        "sheet",
+        "header_row",
+        "rows",
+        "fields"
+      ],
+      "additionalProperties": false
+    }
+  }
+}

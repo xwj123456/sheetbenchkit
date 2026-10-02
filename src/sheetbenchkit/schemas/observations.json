@@ -1,0 +1,140 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "schema_version": {
+      "const": "1"
+    },
+    "runs": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/run"
+      },
+      "minItems": 1
+    },
+    "observations": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/observation"
+      }
+    }
+  },
+  "required": [
+    "schema_version",
+    "runs",
+    "observations"
+  ],
+  "additionalProperties": false,
+  "$defs": {
+    "json": {
+      "oneOf": [
+        {
+          "type": "null"
+        },
+        {
+          "type": "boolean"
+        },
+        {
+          "type": "number"
+        },
+        {
+          "type": "string"
+        },
+        {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/json"
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "#/$defs/json"
+          }
+        }
+      ]
+    },
+    "observation": {
+      "type": "object",
+      "properties": {
+        "case_id": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9_-]{1,64}(?![\\s\\S])"
+        },
+        "attempt": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 10
+        },
+        "config_id": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9_-]{1,64}(?![\\s\\S])"
+        },
+        "execution_status": {
+          "enum": [
+            "SUCCESS",
+            "TIMEOUT",
+            "NONZERO_EXIT",
+            "START_ERROR",
+            "OUTPUT_LIMIT"
+          ]
+        },
+        "raw_stdout": {
+          "type": "string"
+        },
+        "raw_stderr": {
+          "type": "string"
+        },
+        "usage": {
+          "oneOf": [
+            {
+              "type": "object",
+              "additionalProperties": {
+                "$ref": "#/$defs/json"
+              }
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "runtime_metadata": {
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "#/$defs/json"
+          }
+        }
+      },
+      "required": [
+        "case_id",
+        "attempt",
+        "config_id",
+        "execution_status",
+        "raw_stdout",
+        "raw_stderr",
+        "usage",
+        "runtime_metadata"
+      ],
+      "additionalProperties": false
+    },
+    "run": {
+      "type": "object",
+      "properties": {
+        "config_id": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9_-]{1,64}(?![\\s\\S])"
+        },
+        "repeats": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 10
+        }
+      },
+      "required": [
+        "config_id",
+        "repeats"
+      ],
+      "additionalProperties": false
+    }
+  }
+}

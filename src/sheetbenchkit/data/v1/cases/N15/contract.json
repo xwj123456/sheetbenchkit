@@ -1,0 +1,1 @@
+{"metric":{"field":"amount","op":"sum","places":0,"rounding":"HALF_UP","source":"chosen","unit":"units"},"metric_id":"metric","schema_version":"1","sources":{"chosen":{"file_id":"data","header_row":1,"rows":[2,3],"sheet":"@csv"}}}

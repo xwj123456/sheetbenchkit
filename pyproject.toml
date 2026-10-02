@@ -1,0 +1,49 @@
+[build-system]
+requires = ["hatchling>=1.26,<2"]
+build-backend = "hatchling.build"
+
+[project]
+name = "sheetbenchkit"
+version = "0.1.0"
+description = "Offline, frozen-gold spreadsheet rule benchmark toolkit"
+readme = "README.md"
+requires-python = ">=3.12"
+license = "Apache-2.0"
+authors = [{name = "恒椿", email = "32697196+xwj123456@users.noreply.github.com"}]
+dependencies = ["jsonschema>=4.23,<5", "openpyxl>=3.1.5,<4", "defusedxml>=0.7.1,<1"]
+
+[project.scripts]
+sheetbenchkit = "sheetbenchkit.cli:main"
+
+[dependency-groups]
+dev = ["pytest>=8.3,<9", "ruff>=0.11,<1", "mypy>=1.15,<2", "build>=1.2,<2", "types-jsonschema>=4.23,<5"]
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/sheetbenchkit"]
+
+[tool.hatch.build.targets.sdist]
+include = [
+  "/src/sheetbenchkit",
+  "/tests",
+  "/docs",
+  "/.github",
+  "/.gitattributes",
+  "/.gitignore",
+  "/pyproject.toml",
+  "/uv.lock",
+  "/README.md",
+  "/CONTRIBUTING.md",
+  "/SECURITY.md",
+  "/LICENSE",
+  "/NOTICE",
+]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+
+[tool.ruff.lint]
+select = ["E", "F", "I"]
