@@ -62,10 +62,11 @@ def _bind_inputs(envelope: m.TaskEnvelope, ref: m.CaseRef, root: Path) -> m.Task
 def _kill_owned_group(process: subprocess.Popen[bytes]) -> None:
     # start_new_session guarantees pid==pgid. Never signal the caller's group or
     # enumerate unrelated processes; escaped sessions are outside this control.
-    try:
-        os.killpg(process.pid, signal.SIGKILL)
-    except ProcessLookupError:
-        pass
+    if sys.platform != "win32":
+        try:
+            os.killpg(process.pid, signal.SIGKILL)
+        except ProcessLookupError:
+            pass
 
 
 def _text(raw: bytes, stream: str, metadata: dict[str, Any]) -> str:
