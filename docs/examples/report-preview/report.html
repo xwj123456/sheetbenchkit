@@ -1,0 +1,1065 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SheetBenchKit · 测试报告</title>
+<style>
+* { box-sizing: border-box; }
+body { margin: 0; background: #fff; color: #172033; font: 14px/1.55 system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif; }
+main { max-width: 1288px; margin: auto; padding: 24px; min-width: 0; }
+h1 { font-size: 24px; line-height: 1.3; margin: 0 0 12px; }
+h2 { font-size: 18px; line-height: 1.4; margin: 0 0 16px; }
+h3 { font-size: 16px; margin: 0 0 12px; }
+h4 { font-size: 14px; margin: 12px 0 6px; }
+p { margin: 8px 0 12px; }
+section { margin-top: 28px; padding-top: 20px; border-top: 1px solid #cbd5e1; }
+article, .evidence { border: 1px solid #cbd5e1; border-radius: 4px; padding: 16px; margin: 12px 0; min-width: 0; }
+.mono, pre, dd { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", "PingFang SC", "Microsoft YaHei", monospace; }
+header, p, h1, h2, h3, h4, dt, dd, summary, td, pre { overflow-wrap: anywhere; }
+pre { white-space: pre-wrap; margin: 8px 0 12px; font-size: 13px; line-height: 1.55; }
+.stats { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; margin: 16px 0; }
+.stats > div { background: #f8fafc; border: 1px solid #cbd5e1; padding: 12px; min-width: 0; }
+dt { color: #475569; font-size: 12px; }
+dd { margin: 8px 0 0; font-size: 18px; font-weight: 600; font-variant-numeric: tabular-nums; text-align: right; }
+.badge { display: inline-block; border: 1px solid currentColor; border-radius: 4px; padding: 3px 7px; font-size: 12px; font-weight: 600; }
+.PASS { color: #166534; background: #f0fdf4; }
+.FAIL { color: #9f1239; background: #fff1f2; }
+.NO_RESULT { color: #854d0e; background: #fefce8; }
+.ERROR { color: #991b1b; background: #fef2f2; }
+.NOT_CHECKED, .UNKNOWN { color: #475569; background: #f1f5f9; }
+.quarantine { border: 1px solid #991b1b; background: #fef2f2; padding: 16px; }
+details { min-width: 0; margin: 12px 0; }
+summary { cursor: pointer; padding: 6px 0; font-weight: 600; }
+summary:focus-visible, .table-scroll:focus-visible { outline: 3px solid #1e40af; outline-offset: 3px; }
+.scroll-note, footer { color: #475569; font-size: 12px; }
+.table-scroll { max-width: 100%; overflow-x: auto; border: 1px solid #cbd5e1; }
+table { border-collapse: collapse; width: 100%; min-width: 900px; table-layout: fixed; }
+caption { text-align: left; font-weight: 600; padding: 12px; }
+th, td { text-align: left; vertical-align: top; padding: 12px; border-top: 1px solid #cbd5e1; }
+th { background: #f8fafc; }
+.num { display: block; text-align: right; font-variant-numeric: tabular-nums; }
+footer { margin-top: 28px; border-top: 1px solid #cbd5e1; padding-top: 12px; }
+@media (max-width: 700px) {
+main { padding: 16px; }
+h1 { font-size: 22px; }
+.stats { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+article, .evidence { padding: 12px; }
+}
+@media (max-width: 300px) { .stats { grid-template-columns: minmax(0, 1fr); } }
+</style>
+</head>
+<body><main><header><h1>SheetBenchKit · 测试报告</h1><p class="mono">suite_id: suite_83ec246624ac3b37bb9f7b12</p><p>valid: <strong>true</strong> · 有效性不代表所有业务断言通过。</p></header><dl class="stats"><div><dt>planned · 计划评测槽位</dt><dd>3</dd></div><div><dt>attempted · 计划评测槽位</dt><dd>3</dd></div><div><dt>observed_count · 已保存观测</dt><dd>3</dd></div><div><dt>missing_count · 缺失观测</dt><dd>0</dd></div><div><dt><span class="badge PASS">PASS · 通过</span></dt><dd>1</dd></div><div><dt><span class="badge FAIL">FAIL · 断言失败</span></dt><dd>1</dd></div><div><dt><span class="badge NO_RESULT">NO_RESULT · 缺少结果</span></dt><dd>1</dd></div><div><dt><span class="badge ERROR">ERROR · 工具或案例错误</span></dt><dd>0</dd></div></dl><p>attempted 是计划评测槽位，与 planned 相等；已保存观测与缺失分别列出。缺观测不代表已确认启动或未启动。</p><section><h2>按配置统计</h2><p>仅整理保存计数；结构合法数与原因汇总为保存标记的展示计数。未重新判分；无推断的成功率。</p><article data-config="constructed-preview"><h3 class="mono">config_id: constructed-preview</h3><dl class="stats"><div><dt>planned · 计划评测槽位</dt><dd>3</dd></div><div><dt>attempted · 计划评测槽位</dt><dd>3</dd></div><div><dt>observed_count · 已保存观测</dt><dd>3</dd></div><div><dt>missing_count · 缺失观测</dt><dd>0</dd></div><div><dt>结构合法 · 保存 protocol_valid=true 的案例数</dt><dd>2</dd></div><div><dt><span class="badge PASS">PASS · 通过</span></dt><dd>1</dd></div><div><dt><span class="badge FAIL">FAIL · 断言失败</span></dt><dd>1</dd></div><div><dt><span class="badge NO_RESULT">NO_RESULT · 缺少结果</span></dt><dd>1</dd></div><div><dt><span class="badge ERROR">ERROR · 工具或案例错误</span></dt><dd>0</dd></div></dl><div class="field"><h4>保存案例原因 · 展示计数</h4><pre>{
+  &quot;INVALID_JSON&quot;: 1,
+  &quot;VALUE_MISMATCH&quot;: 1
+}</pre></div><details><summary>完整配置统计</summary><pre>{
+  &quot;planned&quot;: 3,
+  &quot;attempted&quot;: 3,
+  &quot;observed_count&quot;: 3,
+  &quot;missing_count&quot;: 0,
+  &quot;status_counts&quot;: {
+    &quot;PASS&quot;: 1,
+    &quot;FAIL&quot;: 1,
+    &quot;NO_RESULT&quot;: 1,
+    &quot;ERROR&quot;: 0
+  }
+}</pre></details></article><details><summary>保存运行计划 runs</summary><pre>[
+  {
+    &quot;config_id&quot;: &quot;constructed-preview&quot;,
+    &quot;repeats&quot;: 1
+  }
+]</pre></details></section><section><h2>需检查的结果与证据</h2><p>异常视图不新增案例；NOT_CHECKED 描述检查范围，合法 ABSTAIN 的 binding_check 未检查不表示案例失败。</p><details class="evidence" open data-case="R23"><summary><span class="badge FAIL">FAIL · 断言失败</span> · R23</summary><p class="mono">config_id=constructed-preview · case_id=R23 · metric_id=metric · attempt=1</p><p>reason: <span class="mono">VALUE_MISMATCH</span></p><p>expected_status: VALUE</p><h4>value_check</h4><span class="badge FAIL">FAIL · 断言失败</span><h4>expected（保存金标）</h4><p class="mono">82.73%</p><p class="mono">value="0.8273" · unit=ratio</p><pre>{
+  &quot;status&quot;: &quot;VALUE&quot;,
+  &quot;value&quot;: &quot;0.8273&quot;,
+  &quot;unit&quot;: &quot;ratio&quot;,
+  &quot;reason&quot;: null
+}</pre><h4>actual（保存结果）</h4><p class="mono">50%</p><p class="mono">value="0.5000" · unit=ratio</p><pre>{
+  &quot;status&quot;: &quot;VALUE&quot;,
+  &quot;value&quot;: &quot;0.5000&quot;,
+  &quot;unit&quot;: &quot;ratio&quot;,
+  &quot;reason&quot;: null
+}</pre><details><summary>完整检查记录</summary><pre>{
+  &quot;verdict&quot;: &quot;FAIL&quot;,
+  &quot;expected&quot;: {
+    &quot;status&quot;: &quot;VALUE&quot;,
+    &quot;value&quot;: &quot;0.8273&quot;,
+    &quot;unit&quot;: &quot;ratio&quot;,
+    &quot;reason&quot;: null
+  },
+  &quot;actual&quot;: {
+    &quot;status&quot;: &quot;VALUE&quot;,
+    &quot;value&quot;: &quot;0.5000&quot;,
+    &quot;unit&quot;: &quot;ratio&quot;,
+    &quot;reason&quot;: null
+  }
+}</pre></details><h4>binding_check</h4><span class="badge PASS">PASS · 通过</span><h4>expected（保存金标）</h4><div class="field"><h4>保存值</h4><pre>[
+  {
+    &quot;source&quot;: &quot;bottom&quot;,
+    &quot;file_id&quot;: &quot;data&quot;,
+    &quot;sheet&quot;: &quot;@csv&quot;,
+    &quot;header_row&quot;: 1,
+    &quot;rows&quot;: [
+      2,
+      3
+    ],
+    &quot;fields&quot;: [
+      &quot;denominator&quot;
+    ]
+  },
+  {
+    &quot;source&quot;: &quot;top&quot;,
+    &quot;file_id&quot;: &quot;data&quot;,
+    &quot;sheet&quot;: &quot;@csv&quot;,
+    &quot;header_row&quot;: 1,
+    &quot;rows&quot;: [
+      2,
+      3
+    ],
+    &quot;fields&quot;: [
+      &quot;numerator&quot;
+    ]
+  }
+]</pre></div><h4>actual（保存结果）</h4><div class="field"><h4>保存值</h4><pre>[
+  {
+    &quot;source&quot;: &quot;bottom&quot;,
+    &quot;file_id&quot;: &quot;data&quot;,
+    &quot;sheet&quot;: &quot;@csv&quot;,
+    &quot;header_row&quot;: 1,
+    &quot;rows&quot;: [
+      2,
+      3
+    ],
+    &quot;fields&quot;: [
+      &quot;denominator&quot;
+    ]
+  },
+  {
+    &quot;source&quot;: &quot;top&quot;,
+    &quot;file_id&quot;: &quot;data&quot;,
+    &quot;sheet&quot;: &quot;@csv&quot;,
+    &quot;header_row&quot;: 1,
+    &quot;rows&quot;: [
+      2,
+      3
+    ],
+    &quot;fields&quot;: [
+      &quot;numerator&quot;
+    ]
+  }
+]</pre></div><details><summary>完整检查记录</summary><pre>{
+  &quot;verdict&quot;: &quot;PASS&quot;,
+  &quot;expected&quot;: [
+    {
+      &quot;source&quot;: &quot;bottom&quot;,
+      &quot;file_id&quot;: &quot;data&quot;,
+      &quot;sheet&quot;: &quot;@csv&quot;,
+      &quot;header_row&quot;: 1,
+      &quot;rows&quot;: [
+        2,
+        3
+      ],
+      &quot;fields&quot;: [
+        &quot;denominator&quot;
+      ]
+    },
+    {
+      &quot;source&quot;: &quot;top&quot;,
+      &quot;file_id&quot;: &quot;data&quot;,
+      &quot;sheet&quot;: &quot;@csv&quot;,
+      &quot;header_row&quot;: 1,
+      &quot;rows&quot;: [
+        2,
+        3
+      ],
+      &quot;fields&quot;: [
+        &quot;numerator&quot;
+      ]
+    }
+  ],
+  &quot;actual&quot;: [
+    {
+      &quot;source&quot;: &quot;bottom&quot;,
+      &quot;file_id&quot;: &quot;data&quot;,
+      &quot;sheet&quot;: &quot;@csv&quot;,
+      &quot;header_row&quot;: 1,
+      &quot;rows&quot;: [
+        2,
+        3
+      ],
+      &quot;fields&quot;: [
+        &quot;denominator&quot;
+      ]
+    },
+    {
+      &quot;source&quot;: &quot;top&quot;,
+      &quot;file_id&quot;: &quot;data&quot;,
+      &quot;sheet&quot;: &quot;@csv&quot;,
+      &quot;header_row&quot;: 1,
+      &quot;rows&quot;: [
+        2,
+        3
+      ],
+      &quot;fields&quot;: [
+        &quot;numerator&quot;
+      ]
+    }
+  ]
+}</pre></details><div class="field"><h4>输入定位 · input_paths（相对路径，纯文本）</h4><pre>inputs/data.csv</pre></div><div class="field"><h4>输入与合同 hash</h4><pre>{
+  &quot;input_hashes&quot;: {
+    &quot;data&quot;: &quot;0e85a0bd99055b1f871ea8bf24d1e78f75b6890e1b35765d465e2f45e372e5a7&quot;
+  },
+  &quot;contract_sha256&quot;: &quot;7b972d2ef734f47666d542a55451a5a192d23687728cafe314361266bdb35229&quot;,
+  &quot;manifest_sha256&quot;: &quot;4b255bdf1b3d1ecc882b79ebc48ac562ef0355c977046cc04bf48954d9549c1e&quot;,
+  &quot;task_sha256&quot;: &quot;29b290c7fe848ad58c06079a11279d908001ce6379a998c1dfe341ceb3bbc1a2&quot;,
+  &quot;frozen_sha256&quot;: &quot;f9cd4f0303d8df78fb4e8cbefeea2cf75126370b9a68fd273781a14690b3d7b3&quot;
+}</pre></div><p>execution_status: <span class="mono">SUCCESS</span></p><details><summary>保存的 stdout（捕获完整性未提供）</summary><pre>{&quot;bindings&quot;:[{&quot;fields&quot;:[&quot;denominator&quot;],&quot;file_id&quot;:&quot;data&quot;,&quot;header_row&quot;:1,&quot;rows&quot;:[2,3],&quot;sheet&quot;:&quot;@csv&quot;,&quot;source&quot;:&quot;bottom&quot;},{&quot;fields&quot;:[&quot;numerator&quot;],&quot;file_id&quot;:&quot;data&quot;,&quot;header_row&quot;:1,&quot;rows&quot;:[2,3],&quot;sheet&quot;:&quot;@csv&quot;,&quot;source&quot;:&quot;top&quot;}],&quot;case_id&quot;:&quot;R23&quot;,&quot;metric_id&quot;:&quot;metric&quot;,&quot;reason&quot;:null,&quot;schema_version&quot;:&quot;1&quot;,&quot;status&quot;:&quot;VALUE&quot;,&quot;unit&quot;:&quot;ratio&quot;,&quot;value&quot;:&quot;0.5000&quot;}</pre></details><details><summary>保存的 stderr（捕获完整性未提供）</summary><pre></pre></details><details><summary>usage（null 表示未知）</summary><pre>null</pre></details><details><summary>runtime metadata</summary><pre>{
+  &quot;observation_origin&quot;: &quot;constructed_saved_output&quot;,
+  &quot;provider_call_performed&quot;: false,
+  &quot;purpose&quot;: &quot;report_preview&quot;
+}</pre></details><details><summary>完整 evidence · 全部保存字段</summary><pre>{
+  &quot;scope&quot;: &quot;case&quot;,
+  &quot;input_paths&quot;: [
+    &quot;inputs/data.csv&quot;
+  ],
+  &quot;input_hashes&quot;: {
+    &quot;data&quot;: &quot;0e85a0bd99055b1f871ea8bf24d1e78f75b6890e1b35765d465e2f45e372e5a7&quot;
+  },
+  &quot;contract_sha256&quot;: &quot;7b972d2ef734f47666d542a55451a5a192d23687728cafe314361266bdb35229&quot;,
+  &quot;manifest_sha256&quot;: &quot;4b255bdf1b3d1ecc882b79ebc48ac562ef0355c977046cc04bf48954d9549c1e&quot;,
+  &quot;task_sha256&quot;: &quot;29b290c7fe848ad58c06079a11279d908001ce6379a998c1dfe341ceb3bbc1a2&quot;,
+  &quot;frozen_sha256&quot;: &quot;f9cd4f0303d8df78fb4e8cbefeea2cf75126370b9a68fd273781a14690b3d7b3&quot;,
+  &quot;gold_origin&quot;: &quot;preset_independent&quot;,
+  &quot;gold_evidence&quot;: {
+    &quot;method&quot;: &quot;independent Decimal and integer long division&quot;,
+    &quot;review_basis&quot;: &quot;provenance.json fixed expectations; reviewed before implementation&quot;,
+    &quot;source_review&quot;: &quot;ratio of totals=91/110; not mean of row ratios=0.5000&quot;
+  },
+  &quot;raw_stdout&quot;: &quot;{\&quot;bindings\&quot;:[{\&quot;fields\&quot;:[\&quot;denominator\&quot;],\&quot;file_id\&quot;:\&quot;data\&quot;,\&quot;header_row\&quot;:1,\&quot;rows\&quot;:[2,3],\&quot;sheet\&quot;:\&quot;@csv\&quot;,\&quot;source\&quot;:\&quot;bottom\&quot;},{\&quot;fields\&quot;:[\&quot;numerator\&quot;],\&quot;file_id\&quot;:\&quot;data\&quot;,\&quot;header_row\&quot;:1,\&quot;rows\&quot;:[2,3],\&quot;sheet\&quot;:\&quot;@csv\&quot;,\&quot;source\&quot;:\&quot;top\&quot;}],\&quot;case_id\&quot;:\&quot;R23\&quot;,\&quot;metric_id\&quot;:\&quot;metric\&quot;,\&quot;reason\&quot;:null,\&quot;schema_version\&quot;:\&quot;1\&quot;,\&quot;status\&quot;:\&quot;VALUE\&quot;,\&quot;unit\&quot;:\&quot;ratio\&quot;,\&quot;value\&quot;:\&quot;0.5000\&quot;}&quot;,
+  &quot;raw_stderr&quot;: &quot;&quot;,
+  &quot;execution_status&quot;: &quot;SUCCESS&quot;,
+  &quot;usage&quot;: null,
+  &quot;runtime_metadata&quot;: {
+    &quot;observation_origin&quot;: &quot;constructed_saved_output&quot;,
+    &quot;provider_call_performed&quot;: false,
+    &quot;purpose&quot;: &quot;report_preview&quot;
+  },
+  &quot;protocol_valid&quot;: true,
+  &quot;source_claim_scope&quot;: &quot;declared_bindings_only&quot;,
+  &quot;agent_result&quot;: {
+    &quot;schema_version&quot;: &quot;1&quot;,
+    &quot;case_id&quot;: &quot;R23&quot;,
+    &quot;metric_id&quot;: &quot;metric&quot;,
+    &quot;status&quot;: &quot;VALUE&quot;,
+    &quot;value&quot;: &quot;0.5000&quot;,
+    &quot;unit&quot;: &quot;ratio&quot;,
+    &quot;reason&quot;: null,
+    &quot;bindings&quot;: [
+      {
+        &quot;source&quot;: &quot;bottom&quot;,
+        &quot;file_id&quot;: &quot;data&quot;,
+        &quot;sheet&quot;: &quot;@csv&quot;,
+        &quot;header_row&quot;: 1,
+        &quot;rows&quot;: [
+          2,
+          3
+        ],
+        &quot;fields&quot;: [
+          &quot;denominator&quot;
+        ]
+      },
+      {
+        &quot;source&quot;: &quot;top&quot;,
+        &quot;file_id&quot;: &quot;data&quot;,
+        &quot;sheet&quot;: &quot;@csv&quot;,
+        &quot;header_row&quot;: 1,
+        &quot;rows&quot;: [
+          2,
+          3
+        ],
+        &quot;fields&quot;: [
+          &quot;numerator&quot;
+        ]
+      }
+    ]
+  }
+}</pre></details></details><details class="evidence" open data-case="N17"><summary><span class="badge NO_RESULT">NO_RESULT · 缺少结果</span> · N17</summary><p class="mono">config_id=constructed-preview · case_id=N17 · metric_id=metric · attempt=1</p><p>reason: <span class="mono">INVALID_JSON</span></p><p>expected_status: ABSTAIN</p><h4>value_check</h4><span class="badge NOT_CHECKED">NOT_CHECKED · 未检查</span><h4>expected（保存金标）</h4><div class="field"><h4>保存值</h4><pre>null</pre></div><h4>actual（保存结果）</h4><div class="field"><h4>保存值</h4><pre>null</pre></div><details><summary>完整检查记录</summary><pre>{
+  &quot;verdict&quot;: &quot;NOT_CHECKED&quot;,
+  &quot;expected&quot;: null,
+  &quot;actual&quot;: null
+}</pre></details><h4>binding_check</h4><span class="badge NOT_CHECKED">NOT_CHECKED · 未检查</span><h4>expected（保存金标）</h4><div class="field"><h4>保存值</h4><pre>null</pre></div><h4>actual（保存结果）</h4><div class="field"><h4>保存值</h4><pre>null</pre></div><details><summary>完整检查记录</summary><pre>{
+  &quot;verdict&quot;: &quot;NOT_CHECKED&quot;,
+  &quot;expected&quot;: null,
+  &quot;actual&quot;: null
+}</pre></details><div class="field"><h4>输入定位 · input_paths（相对路径，纯文本）</h4><pre>inputs/data.csv</pre></div><div class="field"><h4>输入与合同 hash</h4><pre>{
+  &quot;input_hashes&quot;: {
+    &quot;data&quot;: &quot;9bd0e2cf3727fb433f107372e7d95885fa75046841e04a0b7a3fa34dab35963c&quot;
+  },
+  &quot;contract_sha256&quot;: &quot;76cc222b889b7fa246e93a716d0ff935c63765b25b44cdaa94d0ffb70eed9272&quot;,
+  &quot;manifest_sha256&quot;: &quot;0c7d962889a5bb921f9f0c4d3412d1a31b249074d997a25941b35f1a35549c22&quot;,
+  &quot;task_sha256&quot;: &quot;284d7188bf295a64033b663747124e53296d68d015ce0f27fbf97375b52fb4c5&quot;,
+  &quot;frozen_sha256&quot;: &quot;19a86da289addeb2f1fd01de3c1c95805a49d6f31b0beac2febfae20c82cc5a4&quot;
+}</pre></div><p>execution_status: <span class="mono">SUCCESS</span></p><details><summary>保存的 stdout（捕获完整性未提供）</summary><pre>Constructed preview: no JSON result was supplied.
+</pre></details><details><summary>保存的 stderr（捕获完整性未提供）</summary><pre></pre></details><details><summary>usage（null 表示未知）</summary><pre>null</pre></details><details><summary>runtime metadata</summary><pre>{
+  &quot;observation_origin&quot;: &quot;constructed_saved_output&quot;,
+  &quot;provider_call_performed&quot;: false,
+  &quot;purpose&quot;: &quot;report_preview&quot;
+}</pre></details><details><summary>完整 evidence · 全部保存字段</summary><pre>{
+  &quot;scope&quot;: &quot;case&quot;,
+  &quot;input_paths&quot;: [
+    &quot;inputs/data.csv&quot;
+  ],
+  &quot;input_hashes&quot;: {
+    &quot;data&quot;: &quot;9bd0e2cf3727fb433f107372e7d95885fa75046841e04a0b7a3fa34dab35963c&quot;
+  },
+  &quot;contract_sha256&quot;: &quot;76cc222b889b7fa246e93a716d0ff935c63765b25b44cdaa94d0ffb70eed9272&quot;,
+  &quot;manifest_sha256&quot;: &quot;0c7d962889a5bb921f9f0c4d3412d1a31b249074d997a25941b35f1a35549c22&quot;,
+  &quot;task_sha256&quot;: &quot;284d7188bf295a64033b663747124e53296d68d015ce0f27fbf97375b52fb4c5&quot;,
+  &quot;frozen_sha256&quot;: &quot;19a86da289addeb2f1fd01de3c1c95805a49d6f31b0beac2febfae20c82cc5a4&quot;,
+  &quot;gold_origin&quot;: &quot;preset_independent&quot;,
+  &quot;gold_evidence&quot;: {
+    &quot;method&quot;: &quot;independent Decimal and integer long division&quot;,
+    &quot;review_basis&quot;: &quot;provenance.json fixed expectations; reviewed before implementation&quot;,
+    &quot;source_review&quot;: &quot;literal nonnumeric target must not become zero or be skipped&quot;
+  },
+  &quot;raw_stdout&quot;: &quot;Constructed preview: no JSON result was supplied.\n&quot;,
+  &quot;raw_stderr&quot;: &quot;&quot;,
+  &quot;execution_status&quot;: &quot;SUCCESS&quot;,
+  &quot;usage&quot;: null,
+  &quot;runtime_metadata&quot;: {
+    &quot;observation_origin&quot;: &quot;constructed_saved_output&quot;,
+    &quot;provider_call_performed&quot;: false,
+    &quot;purpose&quot;: &quot;report_preview&quot;
+  },
+  &quot;protocol_valid&quot;: false,
+  &quot;source_claim_scope&quot;: &quot;declared_bindings_only&quot;,
+  &quot;protocol_error&quot;: {
+    &quot;reason&quot;: &quot;INVALID_JSON&quot;,
+    &quot;details&quot;: &quot;Expecting value: line 1 column 1 (char 0)&quot;
+  }
+}</pre></details></details><h3>未检查范围 · 不是新增案例终态</h3><p class="mono">config_id=constructed-preview · case_id=N17 · metric_id=metric · attempt=1</p><p>value_check: <span class="badge NOT_CHECKED">NOT_CHECKED · 未检查</span> · binding_check: <span class="badge NOT_CHECKED">NOT_CHECKED · 未检查</span></p></section><section><h2>完整案例结果</h2><p class="scroll-note">表格可横向滚动查看全部列</p><div class="table-scroll" tabindex="0" role="region" aria-label="全部真实案例 · 套件诊断见异常区"><table><caption>全部真实案例 · 套件诊断见异常区</caption><thead><tr><th scope="col">config / attempt</th><th scope="col">case / metric</th><th scope="col">category / 金标状态</th><th scope="col">verdict</th><th scope="col">reason</th><th scope="col">value_check</th><th scope="col">binding_check</th></tr></thead><tbody><tr><td><p class="mono">config_id=constructed-preview · case_id=N17 · metric_id=metric · attempt=1</p></td><td>N17<br>metric: metric</td><td>numeric<br>金标状态: ABSTAIN</td><td><span class="badge NO_RESULT">NO_RESULT · 缺少结果</span></td><td><span class="mono">INVALID_JSON</span></td><td><span class="badge NOT_CHECKED">NOT_CHECKED · 未检查</span><h4>expected（保存金标）</h4><div class="field"><h4>保存值</h4><pre>null</pre></div><h4>actual（保存结果）</h4><div class="field"><h4>保存值</h4><pre>null</pre></div><details><summary>完整检查记录</summary><pre>{
+  &quot;verdict&quot;: &quot;NOT_CHECKED&quot;,
+  &quot;expected&quot;: null,
+  &quot;actual&quot;: null
+}</pre></details></td><td><span class="badge NOT_CHECKED">NOT_CHECKED · 未检查</span><h4>expected（保存金标）</h4><div class="field"><h4>保存值</h4><pre>null</pre></div><h4>actual（保存结果）</h4><div class="field"><h4>保存值</h4><pre>null</pre></div><details><summary>完整检查记录</summary><pre>{
+  &quot;verdict&quot;: &quot;NOT_CHECKED&quot;,
+  &quot;expected&quot;: null,
+  &quot;actual&quot;: null
+}</pre></details></td></tr><tr><td><p class="mono">config_id=constructed-preview · case_id=R23 · metric_id=metric · attempt=1</p></td><td>R23<br>metric: metric</td><td>ratio<br>金标状态: VALUE</td><td><span class="badge FAIL">FAIL · 断言失败</span></td><td><span class="mono">VALUE_MISMATCH</span></td><td><span class="badge FAIL">FAIL · 断言失败</span><h4>expected（保存金标）</h4><p class="mono">82.73%</p><p class="mono">value="0.8273" · unit=ratio</p><pre>{
+  &quot;status&quot;: &quot;VALUE&quot;,
+  &quot;value&quot;: &quot;0.8273&quot;,
+  &quot;unit&quot;: &quot;ratio&quot;,
+  &quot;reason&quot;: null
+}</pre><h4>actual（保存结果）</h4><p class="mono">50%</p><p class="mono">value="0.5000" · unit=ratio</p><pre>{
+  &quot;status&quot;: &quot;VALUE&quot;,
+  &quot;value&quot;: &quot;0.5000&quot;,
+  &quot;unit&quot;: &quot;ratio&quot;,
+  &quot;reason&quot;: null
+}</pre><details><summary>完整检查记录</summary><pre>{
+  &quot;verdict&quot;: &quot;FAIL&quot;,
+  &quot;expected&quot;: {
+    &quot;status&quot;: &quot;VALUE&quot;,
+    &quot;value&quot;: &quot;0.8273&quot;,
+    &quot;unit&quot;: &quot;ratio&quot;,
+    &quot;reason&quot;: null
+  },
+  &quot;actual&quot;: {
+    &quot;status&quot;: &quot;VALUE&quot;,
+    &quot;value&quot;: &quot;0.5000&quot;,
+    &quot;unit&quot;: &quot;ratio&quot;,
+    &quot;reason&quot;: null
+  }
+}</pre></details></td><td><span class="badge PASS">PASS · 通过</span><h4>expected（保存金标）</h4><div class="field"><h4>保存值</h4><pre>[
+  {
+    &quot;source&quot;: &quot;bottom&quot;,
+    &quot;file_id&quot;: &quot;data&quot;,
+    &quot;sheet&quot;: &quot;@csv&quot;,
+    &quot;header_row&quot;: 1,
+    &quot;rows&quot;: [
+      2,
+      3
+    ],
+    &quot;fields&quot;: [
+      &quot;denominator&quot;
+    ]
+  },
+  {
+    &quot;source&quot;: &quot;top&quot;,
+    &quot;file_id&quot;: &quot;data&quot;,
+    &quot;sheet&quot;: &quot;@csv&quot;,
+    &quot;header_row&quot;: 1,
+    &quot;rows&quot;: [
+      2,
+      3
+    ],
+    &quot;fields&quot;: [
+      &quot;numerator&quot;
+    ]
+  }
+]</pre></div><h4>actual（保存结果）</h4><div class="field"><h4>保存值</h4><pre>[
+  {
+    &quot;source&quot;: &quot;bottom&quot;,
+    &quot;file_id&quot;: &quot;data&quot;,
+    &quot;sheet&quot;: &quot;@csv&quot;,
+    &quot;header_row&quot;: 1,
+    &quot;rows&quot;: [
+      2,
+      3
+    ],
+    &quot;fields&quot;: [
+      &quot;denominator&quot;
+    ]
+  },
+  {
+    &quot;source&quot;: &quot;top&quot;,
+    &quot;file_id&quot;: &quot;data&quot;,
+    &quot;sheet&quot;: &quot;@csv&quot;,
+    &quot;header_row&quot;: 1,
+    &quot;rows&quot;: [
+      2,
+      3
+    ],
+    &quot;fields&quot;: [
+      &quot;numerator&quot;
+    ]
+  }
+]</pre></div><details><summary>完整检查记录</summary><pre>{
+  &quot;verdict&quot;: &quot;PASS&quot;,
+  &quot;expected&quot;: [
+    {
+      &quot;source&quot;: &quot;bottom&quot;,
+      &quot;file_id&quot;: &quot;data&quot;,
+      &quot;sheet&quot;: &quot;@csv&quot;,
+      &quot;header_row&quot;: 1,
+      &quot;rows&quot;: [
+        2,
+        3
+      ],
+      &quot;fields&quot;: [
+        &quot;denominator&quot;
+      ]
+    },
+    {
+      &quot;source&quot;: &quot;top&quot;,
+      &quot;file_id&quot;: &quot;data&quot;,
+      &quot;sheet&quot;: &quot;@csv&quot;,
+      &quot;header_row&quot;: 1,
+      &quot;rows&quot;: [
+        2,
+        3
+      ],
+      &quot;fields&quot;: [
+        &quot;numerator&quot;
+      ]
+    }
+  ],
+  &quot;actual&quot;: [
+    {
+      &quot;source&quot;: &quot;bottom&quot;,
+      &quot;file_id&quot;: &quot;data&quot;,
+      &quot;sheet&quot;: &quot;@csv&quot;,
+      &quot;header_row&quot;: 1,
+      &quot;rows&quot;: [
+        2,
+        3
+      ],
+      &quot;fields&quot;: [
+        &quot;denominator&quot;
+      ]
+    },
+    {
+      &quot;source&quot;: &quot;top&quot;,
+      &quot;file_id&quot;: &quot;data&quot;,
+      &quot;sheet&quot;: &quot;@csv&quot;,
+      &quot;header_row&quot;: 1,
+      &quot;rows&quot;: [
+        2,
+        3
+      ],
+      &quot;fields&quot;: [
+        &quot;numerator&quot;
+      ]
+    }
+  ]
+}</pre></details></td></tr><tr><td><p class="mono">config_id=constructed-preview · case_id=S01 · metric_id=metric · attempt=1</p></td><td>S01<br>metric: metric</td><td>source<br>金标状态: VALUE</td><td><span class="badge PASS">PASS · 通过</span></td><td><span class="mono">null</span></td><td><span class="badge PASS">PASS · 通过</span><h4>expected（保存金标）</h4><p class="mono">value="100" · unit=units</p><pre>{
+  &quot;status&quot;: &quot;VALUE&quot;,
+  &quot;value&quot;: &quot;100&quot;,
+  &quot;unit&quot;: &quot;units&quot;,
+  &quot;reason&quot;: null
+}</pre><h4>actual（保存结果）</h4><p class="mono">value="100" · unit=units</p><pre>{
+  &quot;status&quot;: &quot;VALUE&quot;,
+  &quot;value&quot;: &quot;100&quot;,
+  &quot;unit&quot;: &quot;units&quot;,
+  &quot;reason&quot;: null
+}</pre><details><summary>完整检查记录</summary><pre>{
+  &quot;verdict&quot;: &quot;PASS&quot;,
+  &quot;expected&quot;: {
+    &quot;status&quot;: &quot;VALUE&quot;,
+    &quot;value&quot;: &quot;100&quot;,
+    &quot;unit&quot;: &quot;units&quot;,
+    &quot;reason&quot;: null
+  },
+  &quot;actual&quot;: {
+    &quot;status&quot;: &quot;VALUE&quot;,
+    &quot;value&quot;: &quot;100&quot;,
+    &quot;unit&quot;: &quot;units&quot;,
+    &quot;reason&quot;: null
+  }
+}</pre></details></td><td><span class="badge PASS">PASS · 通过</span><h4>expected（保存金标）</h4><div class="field"><h4>保存值</h4><pre>[
+  {
+    &quot;source&quot;: &quot;chosen&quot;,
+    &quot;file_id&quot;: &quot;target&quot;,
+    &quot;sheet&quot;: &quot;Actual&quot;,
+    &quot;header_row&quot;: 1,
+    &quot;rows&quot;: [
+      2,
+      2
+    ],
+    &quot;fields&quot;: [
+      &quot;amount&quot;
+    ]
+  }
+]</pre></div><h4>actual（保存结果）</h4><div class="field"><h4>保存值</h4><pre>[
+  {
+    &quot;source&quot;: &quot;chosen&quot;,
+    &quot;file_id&quot;: &quot;target&quot;,
+    &quot;sheet&quot;: &quot;Actual&quot;,
+    &quot;header_row&quot;: 1,
+    &quot;rows&quot;: [
+      2,
+      2
+    ],
+    &quot;fields&quot;: [
+      &quot;amount&quot;
+    ]
+  }
+]</pre></div><details><summary>完整检查记录</summary><pre>{
+  &quot;verdict&quot;: &quot;PASS&quot;,
+  &quot;expected&quot;: [
+    {
+      &quot;source&quot;: &quot;chosen&quot;,
+      &quot;file_id&quot;: &quot;target&quot;,
+      &quot;sheet&quot;: &quot;Actual&quot;,
+      &quot;header_row&quot;: 1,
+      &quot;rows&quot;: [
+        2,
+        2
+      ],
+      &quot;fields&quot;: [
+        &quot;amount&quot;
+      ]
+    }
+  ],
+  &quot;actual&quot;: [
+    {
+      &quot;source&quot;: &quot;chosen&quot;,
+      &quot;file_id&quot;: &quot;target&quot;,
+      &quot;sheet&quot;: &quot;Actual&quot;,
+      &quot;header_row&quot;: 1,
+      &quot;rows&quot;: [
+        2,
+        2
+      ],
+      &quot;fields&quot;: [
+        &quot;amount&quot;
+      ]
+    }
+  ]
+}</pre></details></td></tr></tbody></table></div><h3>全部案例证据</h3><details class="evidence" data-case="N17"><summary><span class="badge NO_RESULT">NO_RESULT · 缺少结果</span> · N17</summary><p class="mono">config_id=constructed-preview · case_id=N17 · metric_id=metric · attempt=1</p><p>reason: <span class="mono">INVALID_JSON</span></p><p>expected_status: ABSTAIN</p><h4>value_check</h4><span class="badge NOT_CHECKED">NOT_CHECKED · 未检查</span><h4>expected（保存金标）</h4><div class="field"><h4>保存值</h4><pre>null</pre></div><h4>actual（保存结果）</h4><div class="field"><h4>保存值</h4><pre>null</pre></div><details><summary>完整检查记录</summary><pre>{
+  &quot;verdict&quot;: &quot;NOT_CHECKED&quot;,
+  &quot;expected&quot;: null,
+  &quot;actual&quot;: null
+}</pre></details><h4>binding_check</h4><span class="badge NOT_CHECKED">NOT_CHECKED · 未检查</span><h4>expected（保存金标）</h4><div class="field"><h4>保存值</h4><pre>null</pre></div><h4>actual（保存结果）</h4><div class="field"><h4>保存值</h4><pre>null</pre></div><details><summary>完整检查记录</summary><pre>{
+  &quot;verdict&quot;: &quot;NOT_CHECKED&quot;,
+  &quot;expected&quot;: null,
+  &quot;actual&quot;: null
+}</pre></details><div class="field"><h4>输入定位 · input_paths（相对路径，纯文本）</h4><pre>inputs/data.csv</pre></div><div class="field"><h4>输入与合同 hash</h4><pre>{
+  &quot;input_hashes&quot;: {
+    &quot;data&quot;: &quot;9bd0e2cf3727fb433f107372e7d95885fa75046841e04a0b7a3fa34dab35963c&quot;
+  },
+  &quot;contract_sha256&quot;: &quot;76cc222b889b7fa246e93a716d0ff935c63765b25b44cdaa94d0ffb70eed9272&quot;,
+  &quot;manifest_sha256&quot;: &quot;0c7d962889a5bb921f9f0c4d3412d1a31b249074d997a25941b35f1a35549c22&quot;,
+  &quot;task_sha256&quot;: &quot;284d7188bf295a64033b663747124e53296d68d015ce0f27fbf97375b52fb4c5&quot;,
+  &quot;frozen_sha256&quot;: &quot;19a86da289addeb2f1fd01de3c1c95805a49d6f31b0beac2febfae20c82cc5a4&quot;
+}</pre></div><p>execution_status: <span class="mono">SUCCESS</span></p><details><summary>保存的 stdout（捕获完整性未提供）</summary><pre>Constructed preview: no JSON result was supplied.
+</pre></details><details><summary>保存的 stderr（捕获完整性未提供）</summary><pre></pre></details><details><summary>usage（null 表示未知）</summary><pre>null</pre></details><details><summary>runtime metadata</summary><pre>{
+  &quot;observation_origin&quot;: &quot;constructed_saved_output&quot;,
+  &quot;provider_call_performed&quot;: false,
+  &quot;purpose&quot;: &quot;report_preview&quot;
+}</pre></details><details><summary>完整 evidence · 全部保存字段</summary><pre>{
+  &quot;scope&quot;: &quot;case&quot;,
+  &quot;input_paths&quot;: [
+    &quot;inputs/data.csv&quot;
+  ],
+  &quot;input_hashes&quot;: {
+    &quot;data&quot;: &quot;9bd0e2cf3727fb433f107372e7d95885fa75046841e04a0b7a3fa34dab35963c&quot;
+  },
+  &quot;contract_sha256&quot;: &quot;76cc222b889b7fa246e93a716d0ff935c63765b25b44cdaa94d0ffb70eed9272&quot;,
+  &quot;manifest_sha256&quot;: &quot;0c7d962889a5bb921f9f0c4d3412d1a31b249074d997a25941b35f1a35549c22&quot;,
+  &quot;task_sha256&quot;: &quot;284d7188bf295a64033b663747124e53296d68d015ce0f27fbf97375b52fb4c5&quot;,
+  &quot;frozen_sha256&quot;: &quot;19a86da289addeb2f1fd01de3c1c95805a49d6f31b0beac2febfae20c82cc5a4&quot;,
+  &quot;gold_origin&quot;: &quot;preset_independent&quot;,
+  &quot;gold_evidence&quot;: {
+    &quot;method&quot;: &quot;independent Decimal and integer long division&quot;,
+    &quot;review_basis&quot;: &quot;provenance.json fixed expectations; reviewed before implementation&quot;,
+    &quot;source_review&quot;: &quot;literal nonnumeric target must not become zero or be skipped&quot;
+  },
+  &quot;raw_stdout&quot;: &quot;Constructed preview: no JSON result was supplied.\n&quot;,
+  &quot;raw_stderr&quot;: &quot;&quot;,
+  &quot;execution_status&quot;: &quot;SUCCESS&quot;,
+  &quot;usage&quot;: null,
+  &quot;runtime_metadata&quot;: {
+    &quot;observation_origin&quot;: &quot;constructed_saved_output&quot;,
+    &quot;provider_call_performed&quot;: false,
+    &quot;purpose&quot;: &quot;report_preview&quot;
+  },
+  &quot;protocol_valid&quot;: false,
+  &quot;source_claim_scope&quot;: &quot;declared_bindings_only&quot;,
+  &quot;protocol_error&quot;: {
+    &quot;reason&quot;: &quot;INVALID_JSON&quot;,
+    &quot;details&quot;: &quot;Expecting value: line 1 column 1 (char 0)&quot;
+  }
+}</pre></details></details><details class="evidence" data-case="R23"><summary><span class="badge FAIL">FAIL · 断言失败</span> · R23</summary><p class="mono">config_id=constructed-preview · case_id=R23 · metric_id=metric · attempt=1</p><p>reason: <span class="mono">VALUE_MISMATCH</span></p><p>expected_status: VALUE</p><h4>value_check</h4><span class="badge FAIL">FAIL · 断言失败</span><h4>expected（保存金标）</h4><p class="mono">82.73%</p><p class="mono">value="0.8273" · unit=ratio</p><pre>{
+  &quot;status&quot;: &quot;VALUE&quot;,
+  &quot;value&quot;: &quot;0.8273&quot;,
+  &quot;unit&quot;: &quot;ratio&quot;,
+  &quot;reason&quot;: null
+}</pre><h4>actual（保存结果）</h4><p class="mono">50%</p><p class="mono">value="0.5000" · unit=ratio</p><pre>{
+  &quot;status&quot;: &quot;VALUE&quot;,
+  &quot;value&quot;: &quot;0.5000&quot;,
+  &quot;unit&quot;: &quot;ratio&quot;,
+  &quot;reason&quot;: null
+}</pre><details><summary>完整检查记录</summary><pre>{
+  &quot;verdict&quot;: &quot;FAIL&quot;,
+  &quot;expected&quot;: {
+    &quot;status&quot;: &quot;VALUE&quot;,
+    &quot;value&quot;: &quot;0.8273&quot;,
+    &quot;unit&quot;: &quot;ratio&quot;,
+    &quot;reason&quot;: null
+  },
+  &quot;actual&quot;: {
+    &quot;status&quot;: &quot;VALUE&quot;,
+    &quot;value&quot;: &quot;0.5000&quot;,
+    &quot;unit&quot;: &quot;ratio&quot;,
+    &quot;reason&quot;: null
+  }
+}</pre></details><h4>binding_check</h4><span class="badge PASS">PASS · 通过</span><h4>expected（保存金标）</h4><div class="field"><h4>保存值</h4><pre>[
+  {
+    &quot;source&quot;: &quot;bottom&quot;,
+    &quot;file_id&quot;: &quot;data&quot;,
+    &quot;sheet&quot;: &quot;@csv&quot;,
+    &quot;header_row&quot;: 1,
+    &quot;rows&quot;: [
+      2,
+      3
+    ],
+    &quot;fields&quot;: [
+      &quot;denominator&quot;
+    ]
+  },
+  {
+    &quot;source&quot;: &quot;top&quot;,
+    &quot;file_id&quot;: &quot;data&quot;,
+    &quot;sheet&quot;: &quot;@csv&quot;,
+    &quot;header_row&quot;: 1,
+    &quot;rows&quot;: [
+      2,
+      3
+    ],
+    &quot;fields&quot;: [
+      &quot;numerator&quot;
+    ]
+  }
+]</pre></div><h4>actual（保存结果）</h4><div class="field"><h4>保存值</h4><pre>[
+  {
+    &quot;source&quot;: &quot;bottom&quot;,
+    &quot;file_id&quot;: &quot;data&quot;,
+    &quot;sheet&quot;: &quot;@csv&quot;,
+    &quot;header_row&quot;: 1,
+    &quot;rows&quot;: [
+      2,
+      3
+    ],
+    &quot;fields&quot;: [
+      &quot;denominator&quot;
+    ]
+  },
+  {
+    &quot;source&quot;: &quot;top&quot;,
+    &quot;file_id&quot;: &quot;data&quot;,
+    &quot;sheet&quot;: &quot;@csv&quot;,
+    &quot;header_row&quot;: 1,
+    &quot;rows&quot;: [
+      2,
+      3
+    ],
+    &quot;fields&quot;: [
+      &quot;numerator&quot;
+    ]
+  }
+]</pre></div><details><summary>完整检查记录</summary><pre>{
+  &quot;verdict&quot;: &quot;PASS&quot;,
+  &quot;expected&quot;: [
+    {
+      &quot;source&quot;: &quot;bottom&quot;,
+      &quot;file_id&quot;: &quot;data&quot;,
+      &quot;sheet&quot;: &quot;@csv&quot;,
+      &quot;header_row&quot;: 1,
+      &quot;rows&quot;: [
+        2,
+        3
+      ],
+      &quot;fields&quot;: [
+        &quot;denominator&quot;
+      ]
+    },
+    {
+      &quot;source&quot;: &quot;top&quot;,
+      &quot;file_id&quot;: &quot;data&quot;,
+      &quot;sheet&quot;: &quot;@csv&quot;,
+      &quot;header_row&quot;: 1,
+      &quot;rows&quot;: [
+        2,
+        3
+      ],
+      &quot;fields&quot;: [
+        &quot;numerator&quot;
+      ]
+    }
+  ],
+  &quot;actual&quot;: [
+    {
+      &quot;source&quot;: &quot;bottom&quot;,
+      &quot;file_id&quot;: &quot;data&quot;,
+      &quot;sheet&quot;: &quot;@csv&quot;,
+      &quot;header_row&quot;: 1,
+      &quot;rows&quot;: [
+        2,
+        3
+      ],
+      &quot;fields&quot;: [
+        &quot;denominator&quot;
+      ]
+    },
+    {
+      &quot;source&quot;: &quot;top&quot;,
+      &quot;file_id&quot;: &quot;data&quot;,
+      &quot;sheet&quot;: &quot;@csv&quot;,
+      &quot;header_row&quot;: 1,
+      &quot;rows&quot;: [
+        2,
+        3
+      ],
+      &quot;fields&quot;: [
+        &quot;numerator&quot;
+      ]
+    }
+  ]
+}</pre></details><div class="field"><h4>输入定位 · input_paths（相对路径，纯文本）</h4><pre>inputs/data.csv</pre></div><div class="field"><h4>输入与合同 hash</h4><pre>{
+  &quot;input_hashes&quot;: {
+    &quot;data&quot;: &quot;0e85a0bd99055b1f871ea8bf24d1e78f75b6890e1b35765d465e2f45e372e5a7&quot;
+  },
+  &quot;contract_sha256&quot;: &quot;7b972d2ef734f47666d542a55451a5a192d23687728cafe314361266bdb35229&quot;,
+  &quot;manifest_sha256&quot;: &quot;4b255bdf1b3d1ecc882b79ebc48ac562ef0355c977046cc04bf48954d9549c1e&quot;,
+  &quot;task_sha256&quot;: &quot;29b290c7fe848ad58c06079a11279d908001ce6379a998c1dfe341ceb3bbc1a2&quot;,
+  &quot;frozen_sha256&quot;: &quot;f9cd4f0303d8df78fb4e8cbefeea2cf75126370b9a68fd273781a14690b3d7b3&quot;
+}</pre></div><p>execution_status: <span class="mono">SUCCESS</span></p><details><summary>保存的 stdout（捕获完整性未提供）</summary><pre>{&quot;bindings&quot;:[{&quot;fields&quot;:[&quot;denominator&quot;],&quot;file_id&quot;:&quot;data&quot;,&quot;header_row&quot;:1,&quot;rows&quot;:[2,3],&quot;sheet&quot;:&quot;@csv&quot;,&quot;source&quot;:&quot;bottom&quot;},{&quot;fields&quot;:[&quot;numerator&quot;],&quot;file_id&quot;:&quot;data&quot;,&quot;header_row&quot;:1,&quot;rows&quot;:[2,3],&quot;sheet&quot;:&quot;@csv&quot;,&quot;source&quot;:&quot;top&quot;}],&quot;case_id&quot;:&quot;R23&quot;,&quot;metric_id&quot;:&quot;metric&quot;,&quot;reason&quot;:null,&quot;schema_version&quot;:&quot;1&quot;,&quot;status&quot;:&quot;VALUE&quot;,&quot;unit&quot;:&quot;ratio&quot;,&quot;value&quot;:&quot;0.5000&quot;}</pre></details><details><summary>保存的 stderr（捕获完整性未提供）</summary><pre></pre></details><details><summary>usage（null 表示未知）</summary><pre>null</pre></details><details><summary>runtime metadata</summary><pre>{
+  &quot;observation_origin&quot;: &quot;constructed_saved_output&quot;,
+  &quot;provider_call_performed&quot;: false,
+  &quot;purpose&quot;: &quot;report_preview&quot;
+}</pre></details><details><summary>完整 evidence · 全部保存字段</summary><pre>{
+  &quot;scope&quot;: &quot;case&quot;,
+  &quot;input_paths&quot;: [
+    &quot;inputs/data.csv&quot;
+  ],
+  &quot;input_hashes&quot;: {
+    &quot;data&quot;: &quot;0e85a0bd99055b1f871ea8bf24d1e78f75b6890e1b35765d465e2f45e372e5a7&quot;
+  },
+  &quot;contract_sha256&quot;: &quot;7b972d2ef734f47666d542a55451a5a192d23687728cafe314361266bdb35229&quot;,
+  &quot;manifest_sha256&quot;: &quot;4b255bdf1b3d1ecc882b79ebc48ac562ef0355c977046cc04bf48954d9549c1e&quot;,
+  &quot;task_sha256&quot;: &quot;29b290c7fe848ad58c06079a11279d908001ce6379a998c1dfe341ceb3bbc1a2&quot;,
+  &quot;frozen_sha256&quot;: &quot;f9cd4f0303d8df78fb4e8cbefeea2cf75126370b9a68fd273781a14690b3d7b3&quot;,
+  &quot;gold_origin&quot;: &quot;preset_independent&quot;,
+  &quot;gold_evidence&quot;: {
+    &quot;method&quot;: &quot;independent Decimal and integer long division&quot;,
+    &quot;review_basis&quot;: &quot;provenance.json fixed expectations; reviewed before implementation&quot;,
+    &quot;source_review&quot;: &quot;ratio of totals=91/110; not mean of row ratios=0.5000&quot;
+  },
+  &quot;raw_stdout&quot;: &quot;{\&quot;bindings\&quot;:[{\&quot;fields\&quot;:[\&quot;denominator\&quot;],\&quot;file_id\&quot;:\&quot;data\&quot;,\&quot;header_row\&quot;:1,\&quot;rows\&quot;:[2,3],\&quot;sheet\&quot;:\&quot;@csv\&quot;,\&quot;source\&quot;:\&quot;bottom\&quot;},{\&quot;fields\&quot;:[\&quot;numerator\&quot;],\&quot;file_id\&quot;:\&quot;data\&quot;,\&quot;header_row\&quot;:1,\&quot;rows\&quot;:[2,3],\&quot;sheet\&quot;:\&quot;@csv\&quot;,\&quot;source\&quot;:\&quot;top\&quot;}],\&quot;case_id\&quot;:\&quot;R23\&quot;,\&quot;metric_id\&quot;:\&quot;metric\&quot;,\&quot;reason\&quot;:null,\&quot;schema_version\&quot;:\&quot;1\&quot;,\&quot;status\&quot;:\&quot;VALUE\&quot;,\&quot;unit\&quot;:\&quot;ratio\&quot;,\&quot;value\&quot;:\&quot;0.5000\&quot;}&quot;,
+  &quot;raw_stderr&quot;: &quot;&quot;,
+  &quot;execution_status&quot;: &quot;SUCCESS&quot;,
+  &quot;usage&quot;: null,
+  &quot;runtime_metadata&quot;: {
+    &quot;observation_origin&quot;: &quot;constructed_saved_output&quot;,
+    &quot;provider_call_performed&quot;: false,
+    &quot;purpose&quot;: &quot;report_preview&quot;
+  },
+  &quot;protocol_valid&quot;: true,
+  &quot;source_claim_scope&quot;: &quot;declared_bindings_only&quot;,
+  &quot;agent_result&quot;: {
+    &quot;schema_version&quot;: &quot;1&quot;,
+    &quot;case_id&quot;: &quot;R23&quot;,
+    &quot;metric_id&quot;: &quot;metric&quot;,
+    &quot;status&quot;: &quot;VALUE&quot;,
+    &quot;value&quot;: &quot;0.5000&quot;,
+    &quot;unit&quot;: &quot;ratio&quot;,
+    &quot;reason&quot;: null,
+    &quot;bindings&quot;: [
+      {
+        &quot;source&quot;: &quot;bottom&quot;,
+        &quot;file_id&quot;: &quot;data&quot;,
+        &quot;sheet&quot;: &quot;@csv&quot;,
+        &quot;header_row&quot;: 1,
+        &quot;rows&quot;: [
+          2,
+          3
+        ],
+        &quot;fields&quot;: [
+          &quot;denominator&quot;
+        ]
+      },
+      {
+        &quot;source&quot;: &quot;top&quot;,
+        &quot;file_id&quot;: &quot;data&quot;,
+        &quot;sheet&quot;: &quot;@csv&quot;,
+        &quot;header_row&quot;: 1,
+        &quot;rows&quot;: [
+          2,
+          3
+        ],
+        &quot;fields&quot;: [
+          &quot;numerator&quot;
+        ]
+      }
+    ]
+  }
+}</pre></details></details><details class="evidence" data-case="S01"><summary><span class="badge PASS">PASS · 通过</span> · S01</summary><p class="mono">config_id=constructed-preview · case_id=S01 · metric_id=metric · attempt=1</p><p>reason: <span class="mono">null</span></p><p>expected_status: VALUE</p><h4>value_check</h4><span class="badge PASS">PASS · 通过</span><h4>expected（保存金标）</h4><p class="mono">value="100" · unit=units</p><pre>{
+  &quot;status&quot;: &quot;VALUE&quot;,
+  &quot;value&quot;: &quot;100&quot;,
+  &quot;unit&quot;: &quot;units&quot;,
+  &quot;reason&quot;: null
+}</pre><h4>actual（保存结果）</h4><p class="mono">value="100" · unit=units</p><pre>{
+  &quot;status&quot;: &quot;VALUE&quot;,
+  &quot;value&quot;: &quot;100&quot;,
+  &quot;unit&quot;: &quot;units&quot;,
+  &quot;reason&quot;: null
+}</pre><details><summary>完整检查记录</summary><pre>{
+  &quot;verdict&quot;: &quot;PASS&quot;,
+  &quot;expected&quot;: {
+    &quot;status&quot;: &quot;VALUE&quot;,
+    &quot;value&quot;: &quot;100&quot;,
+    &quot;unit&quot;: &quot;units&quot;,
+    &quot;reason&quot;: null
+  },
+  &quot;actual&quot;: {
+    &quot;status&quot;: &quot;VALUE&quot;,
+    &quot;value&quot;: &quot;100&quot;,
+    &quot;unit&quot;: &quot;units&quot;,
+    &quot;reason&quot;: null
+  }
+}</pre></details><h4>binding_check</h4><span class="badge PASS">PASS · 通过</span><h4>expected（保存金标）</h4><div class="field"><h4>保存值</h4><pre>[
+  {
+    &quot;source&quot;: &quot;chosen&quot;,
+    &quot;file_id&quot;: &quot;target&quot;,
+    &quot;sheet&quot;: &quot;Actual&quot;,
+    &quot;header_row&quot;: 1,
+    &quot;rows&quot;: [
+      2,
+      2
+    ],
+    &quot;fields&quot;: [
+      &quot;amount&quot;
+    ]
+  }
+]</pre></div><h4>actual（保存结果）</h4><div class="field"><h4>保存值</h4><pre>[
+  {
+    &quot;source&quot;: &quot;chosen&quot;,
+    &quot;file_id&quot;: &quot;target&quot;,
+    &quot;sheet&quot;: &quot;Actual&quot;,
+    &quot;header_row&quot;: 1,
+    &quot;rows&quot;: [
+      2,
+      2
+    ],
+    &quot;fields&quot;: [
+      &quot;amount&quot;
+    ]
+  }
+]</pre></div><details><summary>完整检查记录</summary><pre>{
+  &quot;verdict&quot;: &quot;PASS&quot;,
+  &quot;expected&quot;: [
+    {
+      &quot;source&quot;: &quot;chosen&quot;,
+      &quot;file_id&quot;: &quot;target&quot;,
+      &quot;sheet&quot;: &quot;Actual&quot;,
+      &quot;header_row&quot;: 1,
+      &quot;rows&quot;: [
+        2,
+        2
+      ],
+      &quot;fields&quot;: [
+        &quot;amount&quot;
+      ]
+    }
+  ],
+  &quot;actual&quot;: [
+    {
+      &quot;source&quot;: &quot;chosen&quot;,
+      &quot;file_id&quot;: &quot;target&quot;,
+      &quot;sheet&quot;: &quot;Actual&quot;,
+      &quot;header_row&quot;: 1,
+      &quot;rows&quot;: [
+        2,
+        2
+      ],
+      &quot;fields&quot;: [
+        &quot;amount&quot;
+      ]
+    }
+  ]
+}</pre></details><div class="field"><h4>输入定位 · input_paths（相对路径，纯文本）</h4><pre>inputs/target.xlsx</pre><pre>inputs/other.xlsx</pre></div><div class="field"><h4>输入与合同 hash</h4><pre>{
+  &quot;input_hashes&quot;: {
+    &quot;target&quot;: &quot;6e462f1abc6c62030d9babd8319c4f17888396229f7c8459bb93079e13dd18bb&quot;,
+    &quot;other&quot;: &quot;6e462f1abc6c62030d9babd8319c4f17888396229f7c8459bb93079e13dd18bb&quot;
+  },
+  &quot;contract_sha256&quot;: &quot;b7b7ce62e522171f84566082d9e7e74d57c28af9bc38130baced2489772a8880&quot;,
+  &quot;manifest_sha256&quot;: &quot;7e6a0a8a52058b1c17b8678d041bbebcd4490d790992334e83f2c480a041efc2&quot;,
+  &quot;task_sha256&quot;: &quot;ca5c76089cf49533da585d74d4e4d2cda1b73a1b3a8f5bfa22a43ab409cead88&quot;,
+  &quot;frozen_sha256&quot;: &quot;36598ee2420fa28ae5866f618d5085a184035412aecc2bee02724e9bcc084757&quot;
+}</pre></div><p>execution_status: <span class="mono">SUCCESS</span></p><details><summary>保存的 stdout（捕获完整性未提供）</summary><pre>{&quot;bindings&quot;:[{&quot;fields&quot;:[&quot;amount&quot;],&quot;file_id&quot;:&quot;target&quot;,&quot;header_row&quot;:1,&quot;rows&quot;:[2,2],&quot;sheet&quot;:&quot;Actual&quot;,&quot;source&quot;:&quot;chosen&quot;}],&quot;case_id&quot;:&quot;S01&quot;,&quot;metric_id&quot;:&quot;metric&quot;,&quot;reason&quot;:null,&quot;schema_version&quot;:&quot;1&quot;,&quot;status&quot;:&quot;VALUE&quot;,&quot;unit&quot;:&quot;units&quot;,&quot;value&quot;:&quot;100&quot;}</pre></details><details><summary>保存的 stderr（捕获完整性未提供）</summary><pre></pre></details><details><summary>usage（null 表示未知）</summary><pre>null</pre></details><details><summary>runtime metadata</summary><pre>{
+  &quot;observation_origin&quot;: &quot;constructed_saved_output&quot;,
+  &quot;provider_call_performed&quot;: false,
+  &quot;purpose&quot;: &quot;report_preview&quot;
+}</pre></details><details><summary>完整 evidence · 全部保存字段</summary><pre>{
+  &quot;scope&quot;: &quot;case&quot;,
+  &quot;input_paths&quot;: [
+    &quot;inputs/target.xlsx&quot;,
+    &quot;inputs/other.xlsx&quot;
+  ],
+  &quot;input_hashes&quot;: {
+    &quot;target&quot;: &quot;6e462f1abc6c62030d9babd8319c4f17888396229f7c8459bb93079e13dd18bb&quot;,
+    &quot;other&quot;: &quot;6e462f1abc6c62030d9babd8319c4f17888396229f7c8459bb93079e13dd18bb&quot;
+  },
+  &quot;contract_sha256&quot;: &quot;b7b7ce62e522171f84566082d9e7e74d57c28af9bc38130baced2489772a8880&quot;,
+  &quot;manifest_sha256&quot;: &quot;7e6a0a8a52058b1c17b8678d041bbebcd4490d790992334e83f2c480a041efc2&quot;,
+  &quot;task_sha256&quot;: &quot;ca5c76089cf49533da585d74d4e4d2cda1b73a1b3a8f5bfa22a43ab409cead88&quot;,
+  &quot;frozen_sha256&quot;: &quot;36598ee2420fa28ae5866f618d5085a184035412aecc2bee02724e9bcc084757&quot;,
+  &quot;gold_origin&quot;: &quot;preset_independent&quot;,
+  &quot;gold_evidence&quot;: {
+    &quot;method&quot;: &quot;independent Decimal and integer long division&quot;,
+    &quot;review_basis&quot;: &quot;provenance.json fixed expectations; reviewed before implementation&quot;,
+    &quot;source_review&quot;: &quot;target.xlsx/Actual/amount=100; other.xlsx=100; base&quot;
+  },
+  &quot;raw_stdout&quot;: &quot;{\&quot;bindings\&quot;:[{\&quot;fields\&quot;:[\&quot;amount\&quot;],\&quot;file_id\&quot;:\&quot;target\&quot;,\&quot;header_row\&quot;:1,\&quot;rows\&quot;:[2,2],\&quot;sheet\&quot;:\&quot;Actual\&quot;,\&quot;source\&quot;:\&quot;chosen\&quot;}],\&quot;case_id\&quot;:\&quot;S01\&quot;,\&quot;metric_id\&quot;:\&quot;metric\&quot;,\&quot;reason\&quot;:null,\&quot;schema_version\&quot;:\&quot;1\&quot;,\&quot;status\&quot;:\&quot;VALUE\&quot;,\&quot;unit\&quot;:\&quot;units\&quot;,\&quot;value\&quot;:\&quot;100\&quot;}&quot;,
+  &quot;raw_stderr&quot;: &quot;&quot;,
+  &quot;execution_status&quot;: &quot;SUCCESS&quot;,
+  &quot;usage&quot;: null,
+  &quot;runtime_metadata&quot;: {
+    &quot;observation_origin&quot;: &quot;constructed_saved_output&quot;,
+    &quot;provider_call_performed&quot;: false,
+    &quot;purpose&quot;: &quot;report_preview&quot;
+  },
+  &quot;protocol_valid&quot;: true,
+  &quot;source_claim_scope&quot;: &quot;declared_bindings_only&quot;,
+  &quot;agent_result&quot;: {
+    &quot;schema_version&quot;: &quot;1&quot;,
+    &quot;case_id&quot;: &quot;S01&quot;,
+    &quot;metric_id&quot;: &quot;metric&quot;,
+    &quot;status&quot;: &quot;VALUE&quot;,
+    &quot;value&quot;: &quot;100&quot;,
+    &quot;unit&quot;: &quot;units&quot;,
+    &quot;reason&quot;: null,
+    &quot;bindings&quot;: [
+      {
+        &quot;source&quot;: &quot;chosen&quot;,
+        &quot;file_id&quot;: &quot;target&quot;,
+        &quot;sheet&quot;: &quot;Actual&quot;,
+        &quot;header_row&quot;: 1,
+        &quot;rows&quot;: [
+          2,
+          2
+        ],
+        &quot;fields&quot;: [
+          &quot;amount&quot;
+        ]
+      }
+    ]
+  }
+}</pre></details></details></section><section><h2>金标状态与类别分层</h2><p class="scroll-note">表格可横向滚动查看全部列</p><div class="table-scroll" tabindex="0" role="region" aria-label="金标状态 VALUE / ABSTAIN"><table><caption>金标状态 VALUE / ABSTAIN</caption><thead><tr><th scope="col">保存标签</th><th scope="col">planned</th><th scope="col">attempted</th><th scope="col">observed</th><th scope="col">missing</th><th scope="col">PASS</th><th scope="col">FAIL</th><th scope="col">NO_RESULT</th><th scope="col">ERROR</th></tr></thead><tbody><tr><td>ABSTAIN</td><td><span class="num">1</span></td><td><span class="num">1</span></td><td><span class="num">1</span></td><td><span class="num">0</span></td><td><span class="num">0</span></td><td><span class="num">0</span></td><td><span class="num">1</span></td><td><span class="num">0</span></td></tr><tr><td>VALUE</td><td><span class="num">2</span></td><td><span class="num">2</span></td><td><span class="num">2</span></td><td><span class="num">0</span></td><td><span class="num">1</span></td><td><span class="num">1</span></td><td><span class="num">0</span></td><td><span class="num">0</span></td></tr></tbody></table></div><p class="scroll-note">表格可横向滚动查看全部列</p><div class="table-scroll" tabindex="0" role="region" aria-label="类别 category"><table><caption>类别 category</caption><thead><tr><th scope="col">保存标签</th><th scope="col">planned</th><th scope="col">attempted</th><th scope="col">observed</th><th scope="col">missing</th><th scope="col">PASS</th><th scope="col">FAIL</th><th scope="col">NO_RESULT</th><th scope="col">ERROR</th></tr></thead><tbody><tr><td>numeric</td><td><span class="num">1</span></td><td><span class="num">1</span></td><td><span class="num">1</span></td><td><span class="num">0</span></td><td><span class="num">0</span></td><td><span class="num">0</span></td><td><span class="num">1</span></td><td><span class="num">0</span></td></tr><tr><td>ratio</td><td><span class="num">1</span></td><td><span class="num">1</span></td><td><span class="num">1</span></td><td><span class="num">0</span></td><td><span class="num">0</span></td><td><span class="num">1</span></td><td><span class="num">0</span></td><td><span class="num">0</span></td></tr><tr><td>source</td><td><span class="num">1</span></td><td><span class="num">1</span></td><td><span class="num">1</span></td><td><span class="num">0</span></td><td><span class="num">1</span></td><td><span class="num">0</span></td><td><span class="num">0</span></td><td><span class="num">0</span></td></tr></tbody></table></div><details><summary>完整保存分层</summary><pre>{
+  &quot;expected_status&quot;: {
+    &quot;ABSTAIN&quot;: {
+      &quot;planned&quot;: 1,
+      &quot;attempted&quot;: 1,
+      &quot;observed_count&quot;: 1,
+      &quot;missing_count&quot;: 0,
+      &quot;status_counts&quot;: {
+        &quot;PASS&quot;: 0,
+        &quot;FAIL&quot;: 0,
+        &quot;NO_RESULT&quot;: 1,
+        &quot;ERROR&quot;: 0
+      }
+    },
+    &quot;VALUE&quot;: {
+      &quot;planned&quot;: 2,
+      &quot;attempted&quot;: 2,
+      &quot;observed_count&quot;: 2,
+      &quot;missing_count&quot;: 0,
+      &quot;status_counts&quot;: {
+        &quot;PASS&quot;: 1,
+        &quot;FAIL&quot;: 1,
+        &quot;NO_RESULT&quot;: 0,
+        &quot;ERROR&quot;: 0
+      }
+    }
+  },
+  &quot;category&quot;: {
+    &quot;numeric&quot;: {
+      &quot;planned&quot;: 1,
+      &quot;attempted&quot;: 1,
+      &quot;observed_count&quot;: 1,
+      &quot;missing_count&quot;: 0,
+      &quot;status_counts&quot;: {
+        &quot;PASS&quot;: 0,
+        &quot;FAIL&quot;: 0,
+        &quot;NO_RESULT&quot;: 1,
+        &quot;ERROR&quot;: 0
+      }
+    },
+    &quot;ratio&quot;: {
+      &quot;planned&quot;: 1,
+      &quot;attempted&quot;: 1,
+      &quot;observed_count&quot;: 1,
+      &quot;missing_count&quot;: 0,
+      &quot;status_counts&quot;: {
+        &quot;PASS&quot;: 0,
+        &quot;FAIL&quot;: 1,
+        &quot;NO_RESULT&quot;: 0,
+        &quot;ERROR&quot;: 0
+      }
+    },
+    &quot;source&quot;: {
+      &quot;planned&quot;: 1,
+      &quot;attempted&quot;: 1,
+      &quot;observed_count&quot;: 1,
+      &quot;missing_count&quot;: 0,
+      &quot;status_counts&quot;: {
+        &quot;PASS&quot;: 1,
+        &quot;FAIL&quot;: 0,
+        &quot;NO_RESULT&quot;: 0,
+        &quot;ERROR&quot;: 0
+      }
+    }
+  }
+}</pre></details></section><section><h2>来源 family 检查</h2><p>来源声明、数值判分与扰动关系分别报告；不能证明模型内部实际来源。family 断言不改变案例分母。</p><div class="field"><h4>保存 family 状态 · 展示计数（NOT_CHECKED 单列）</h4><pre>{}</pre></div><p class="scroll-note">表格可横向滚动查看全部列</p><div class="table-scroll" tabindex="0" role="region" aria-label="所有保存 family 检查"><table><caption>所有保存 family 检查</caption><thead><tr><th scope="col">family_id</th><th scope="col">config_id</th><th scope="col">attempt</th><th scope="col">verdict</th><th scope="col">reason</th></tr></thead><tbody><tr><td colspan="5">没有保存记录</td></tr></tbody></table></div></section><section><h2>usage 与运行信息</h2><p>费用：unknown（缺少价格依据）。usage=null 表示未知；合法 0 保留为 0。运行 metadata 是保存数据，不用于猜测模型身份。</p><article><p class="mono">config_id=constructed-preview · case_id=N17 · metric_id=metric · attempt=1</p><div class="field"><h4>usage</h4><pre>null</pre></div><div class="field"><h4>runtime metadata</h4><pre>{
+  &quot;observation_origin&quot;: &quot;constructed_saved_output&quot;,
+  &quot;provider_call_performed&quot;: false,
+  &quot;purpose&quot;: &quot;report_preview&quot;
+}</pre></div></article><article><p class="mono">config_id=constructed-preview · case_id=R23 · metric_id=metric · attempt=1</p><div class="field"><h4>usage</h4><pre>null</pre></div><div class="field"><h4>runtime metadata</h4><pre>{
+  &quot;observation_origin&quot;: &quot;constructed_saved_output&quot;,
+  &quot;provider_call_performed&quot;: false,
+  &quot;purpose&quot;: &quot;report_preview&quot;
+}</pre></div></article><article><p class="mono">config_id=constructed-preview · case_id=S01 · metric_id=metric · attempt=1</p><div class="field"><h4>usage</h4><pre>null</pre></div><div class="field"><h4>runtime metadata</h4><pre>{
+  &quot;observation_origin&quot;: &quot;constructed_saved_output&quot;,
+  &quot;provider_call_performed&quot;: false,
+  &quot;purpose&quot;: &quot;report_preview&quot;
+}</pre></div></article></section><footer><p>静态保存结果 · 无脚本、无外部资源、无导航。完整机器数据保存在同目录 report.json。</p></footer></main></body>
+</html>

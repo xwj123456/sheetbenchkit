@@ -18,7 +18,8 @@ ROOT = Path(__file__).resolve().parents[1]
 PACKAGE = ROOT / "src/sheetbenchkit"
 PUBLIC_ROOTS = {
     "src", "tests", "docs", ".github", ".gitattributes", ".gitignore", "pyproject.toml",
-    "uv.lock", "LICENSE", "NOTICE", "README.md", "CONTRIBUTING.md", "SECURITY.md", "PKG-INFO",
+    "uv.lock", "LICENSE", "NOTICE", "README.md", "README.zh-CN.md", "CHANGELOG.md",
+    "CONTRIBUTING.md", "SECURITY.md", "PKG-INFO",
 }
 
 
